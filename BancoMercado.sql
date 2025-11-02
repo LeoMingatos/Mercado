@@ -2,7 +2,7 @@ CREATE DATABASE MercadoBD;
 USE MercadoBD;
 
 Create table Produto(
-IdProduto int identity Primary key,
+IdProduto varchar(14) Primary key,
 Nome Varchar(100) not null,
 Preco decimal(10,2) not null,
 Estoque int not null,
@@ -12,7 +12,7 @@ FOREIGN KEY (IdFornecedor) REFERENCES Fornecedor(IdFornecedor)
 
 Create table Cliente(
 IdCliente int identity Primary Key,
-RazaoSocial varchar(100) not null,
+Nome varchar(100) not null,
 CPF varchar(14) not null,
 Telefone varchar(20) not null,
 Email varchar(100) not null
@@ -47,9 +47,21 @@ FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 Create table ItemVenda(
 IdItem int identity Primary Key,
 IdVenda int,
-IdProduto int,
+IdProduto varchar(14),
 Quantidade int not null,
 Subtotal decimal(10,2) not null,
 FOREIGN KEY (IdVenda) REFERENCES Venda(IdVenda),
 FOREIGN KEY (IdProduto) REFERENCES Produto(IdProduto)
 );
+
+
+INSERT INTO Fornecedor (RazaoSocial, CNPJ, Telefone, Email)
+VALUES ('Fugini Alimentos Ltda', '00.588.458/0001-03', '0800 702 4337', 'sac@fugini.com.br');
+
+
+
+
+
+
+
+
